@@ -1,0 +1,43 @@
+name:                pluto-migration
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/Dokuro-YH/pluto.hs
+license:             MIT
+license-file:        LICENSE
+author:              yanhai
+maintainer:          shimmly@live.cn
+copyright:           2018 yanhai
+category:            Database
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Pluto.Migration
+                     , Pluto.Migration.Types
+                     , Pluto.Migration.Store.FileSystem
+                     , Pluto.Migration.Backend.PostgreSQL
+  build-depends:       base                   >= 4.11  && < 5
+                     , bytestring             >= 0.10  && < 0.11
+                     , containers             >= 0.5   && < 0.7
+                     , directory              >= 1.3   && < 1.4
+                     , filepath               >= 1.4   && < 1.5
+                     , postgresql-simple      >= 0.5   && < 0.6
+                     , postgresql-simple-url  >= 0.2   && < 0.3
+                     , text                   >= 1.2   && < 1.3
+                     , time                   >= 1.8   && < 1.9
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+executable pluto-migration
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  other-modules:       Paths_pluto_migration
+  build-depends:       base                   >= 4.11  && < 5
+                     , cmdargs                >= 0.10  && < 0.11
+                     , dotenv                 >= 0.5   && < 0.6
+                     , pluto-migration
+  default-language:    Haskell2010
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N

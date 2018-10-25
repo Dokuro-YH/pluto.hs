@@ -1,0 +1,73 @@
+name:                pluto-server
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/Dokuro-YH/pluto.hs
+license:             MIT
+license-file:        LICENSE
+author:              yanhai
+maintainer:          shimmly@live.cn
+copyright:           2018 yanhai
+category:            Web
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:        src
+  exposed-modules:       Pluto.Server
+                       , Pluto.API
+                       , Pluto.API.Group
+                       , Pluto.Internal.Types
+  other-modules:         Foundation.Database.Class
+                       , Foundation.Database.Imports
+                       , Foundation.Web.JSON
+                       , Foundation.Web.Imports
+                       , Foundation.Types.Imports
+                       , Feature.Auth.Types
+                       , Feature.Group.Types
+                       , Feature.Group.Database
+                       , Feature.Role.Types
+                       , Feature.Role.Database
+                       , Feature.User.Types
+                       , Feature.User.Database
+  build-depends:         aeson
+                       , base                   >= 4.11  && < 5
+                       , binary                 >= 0.8   && < 0.9
+                       , bytestring             >= 0.10  && < 0.11
+                       , containers             >= 0.5   && < 0.7
+                       , data-default           >= 0.7   && < 0.8
+                       , http-api-data          >= 0.3   && < 0.4
+                       , http-types             >= 0.12  && < 0.13
+                       , lifted-base            >= 0.2   && < 0.3
+                       , monad-control          >= 1.0   && < 1.1
+                       , mtl                    >= 2.2   && < 2.3
+                       , parsec                 >= 3.1   && < 3.2
+                       , postgresql-simple      >= 0.5   && < 0.6
+                       , resource-pool          >= 0.2   && < 0.3
+                       , servant                >= 0.14  && < 0.15
+                       , servant-server         >= 0.14  && < 0.15
+                       , template-haskell       >= 2.13  && < 2.14
+                       , text                   >= 1.2   && < 1.3
+                       , time                   >= 1.8   && < 1.9
+                       , transformers           >= 0.5   && < 0.6
+                       , transformers-base      >= 0.4   && < 0.5
+                       , vault                  >= 0.3   && < 0.4
+                       , wai                    >= 3.2   && < 3.3
+                       , warp                   >= 3.2   && < 3.3
+  default-language:      Haskell2010
+  default-extensions:    OverloadedStrings
+                       , RecordWildCards
+                       , LambdaCase
+                       , TemplateHaskell
+  ghc-options:           -Wall
+
+executable pluto-server
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  build-depends:       base                   >= 4.11  && < 5
+                     , dotenv                 >= 0.5   && < 0.6
+                     , pluto-migration        >= 0.1   && < 0.2
+                     , pluto-server           >= 0.1   && < 0.2
+  default-language:    Haskell2010
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
