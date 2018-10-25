@@ -13,7 +13,7 @@ findAll = runQuery_ "select id,name,parent_id,description,created_at,updated_at 
 findById :: MonadDb m => GroupId -> m (Maybe Group)
 findById id' = listToMaybe <$> runQuery sql' [id']
   where
-    sql' = "select id,name,parent_id,description,created_at,updated_at from groups"
+    sql' = "select id,name,parent_id,description,created_at,updated_at from groups where id = ?"
 
 create :: MonadDb m => NewGroup -> m Group
 create NewGroup {..} =

@@ -7,6 +7,7 @@
 
 module Pluto.Internal.Types
   ( PlutoAppT
+  , PlutoErr
   , runPlutoAppT
   , PlutoSettings(..)
   , PlutoEnv(..)

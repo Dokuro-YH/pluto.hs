@@ -21,8 +21,8 @@ main = do
   migrationDir <- fromMaybe "./migrations" <$> lookupEnv "MIGRATION_DIR"
   setupDatabase databaseUrl migrationDir
   server $ PlutoSettings port databaseUrl
-  where
 
+setupDatabase :: String -> FilePath -> IO ()
 setupDatabase url dir = do
   ensureInitializeBackend backend
   installPendingMigrations backend store
