@@ -2,7 +2,7 @@
 Pluto 是一个用Haskell实现的实验性Web API.
 
 
-## Required
+## Requirements
   * [PostgreSQL](https://www.postgresql.org/)
   * [Haskell Tool Stack](https://docs.haskellstack.org/en/stable/README/) 
 
